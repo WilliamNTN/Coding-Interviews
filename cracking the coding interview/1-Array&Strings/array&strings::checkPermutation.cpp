@@ -11,7 +11,7 @@ using namespace std;
 
 
 // Time: O(nlog(n)), 
-// Space: O(1), but the string. True if in-place sorting
+// Space: O(1). True if in-place sorting
 bool checkPermutationSorting(string a, string b){
 	if(a.size() != b.size())
 		return false;

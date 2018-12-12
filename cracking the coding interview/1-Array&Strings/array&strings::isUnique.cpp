@@ -7,8 +7,6 @@
 #include <algorithm>	// sort
 using namespace std;
 
-
-
 // Time: O(nlog(n)), limited by sorting
 // Space: O(1). Do not uses any other memory but the string. True if in-place sorting
 bool isUniqueSorting(string s){ 
@@ -29,15 +27,25 @@ bool isUniqueHash(string s){
 			return false;
 		set.insert(s[i]);
 	}
-
 	return true;
 }
 
+// Assuming only the 26 lowercase alphabet, we can use a single int to store already seen positions 
+bool isUniqueBit(string s){
+	int checker = 0;
+
+	for(int i = 0; i < s.size(); i++){
+		int index = s[i] - 'a';
+		if((checker & (1 << index)) > 0)
+			return false;
+		checker |= (1 << index);
+	}
+
+	return true;
+}
 int main(){
 
 	string s;
-
 	cin>>s;
-
-	cout<<isUniqueHash(s)<<endl;
+	cout<<isUniqueBit(s)<<endl;
 }
